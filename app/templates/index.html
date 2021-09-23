@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{%import 'macros.html' as macro %}
+
+{% block content %}
+<figure class="text-center">
+    <blockquote class="blockquote">
+    <p>{{quotes.quote}}</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+        author: <cite title="Source Title">{{quotes.author}}</cite>
+        <p style="text-align: center;"></p>
+    </figcaption>    
+</figure>
+<br>
+{{macro.displayBlog(blog)}}
+{% endblock %}
