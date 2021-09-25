@@ -5,9 +5,10 @@ class Config:
     General configuration parent class
     '''
     QUOTES_API_BASE_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
-    SECRET_KEY = os.environ.get("SECRET_KEY")
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://shalin:Chepkoech03@localhost/blogger'
+    SECRET_KEY = '123'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://shalin:Chepkoech03@localhost/bloges'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -24,6 +25,10 @@ class ProdConfig(Config):
     '''
     pass
 
+class TestConfig(Config):
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://shalin:Chepkoech03@localhost/bloges_test'
+
+
 
 class DevConfig(Config):
     '''
@@ -31,13 +36,15 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://shalin:Chepkoech03@localhost/bloges'
 
     DEBUG = True
 
 
 config_options = {
 'development':DevConfig,
-'production':ProdConfig
+'production':ProdConfig,
+'test':TestConfig
 }
 
 
